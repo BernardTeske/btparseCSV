@@ -59,6 +59,15 @@ class btparseCSV {
     }
     return $answer;
   }
+  
+  public function download($filename)
+  {
+    header('Content-Type: application/csv');
+    header('Content-Disposition: attachement; filename="'.basename($filename).'";');
+    $fh=fopen($filename, 'r');
+    fpassthru($fh);
+    fclose($fh);
+  }
     
 }
 
